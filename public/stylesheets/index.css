@@ -1,0 +1,38 @@
+
+body {
+    background-color:rgb(255, 255, 255);
+}
+h1 {
+  color: rgb(255, 255, 255);
+  font-family: verdana;
+  font-size: 200%;
+  border: 2px solid rgb(30, 32, 32);
+  padding: 30px;
+  background-color: #04AA6D;
+  }
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+th {
+    background-color: #04AA6D;
+    color: white;
+    border: 1px solid #1a1818;
+    padding: 8px;
+  }
+td {
+    border: 1px solid #1a1818;
+    text-align: left;
+    padding: 8px;
+  }
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+   
+
+
+
+
+  

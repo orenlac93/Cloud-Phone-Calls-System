@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Refresh" content="5">
+        <title>Welcome</title>
+        <script src="/reload/reload.js"></script>
+        <link rel="stylesheet" type="text/css" href="./stylesheets/index.css" media="screen" />
+    </head>
+
+    <body>
+
+        <h1>Phone calls</h1>
+        <hr>
+        
+
+        <table>
+          <thead>
+            <tr>
+              <th>Start Time</th>
+              <th>City</th>
+              <th>Gender</th>
+              <th>Age</th>
+              <th>Prev Calls</th>
+              <th>Product</th>
+              <th>Topic</th>
+            </tr>
+          </thead>  
+
+          <tbody>
+            <% if (locals.calls_) { %>
+              <% var x = 1 %>
+                 <% calls_.forEach(function(obj) { %>
+                 <tr>
+                    
+                    <td><%= obj.StartTime %></td>
+                    <td><%= obj.City %></td>
+                    <td><%= obj.Gender %></td>
+                    <td><%= obj.Age %></td>
+                    <td><%= obj.PrevCalls %></td>
+                    <td><%= obj.Product %></td>
+                    <td><%= obj.Topic %></td>
+              <% x++;}); %>
+              <% } %>
+
+ 
+          </tbody>           
+
+        </table>
+
+    </body>
+</html>
