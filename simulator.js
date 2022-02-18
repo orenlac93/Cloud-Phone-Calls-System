@@ -1,7 +1,6 @@
 const date = require('date-and-time');
 var sleep = require('system-sleep');
 var mongoModule = require('./mongo-module.js')
-var Call = require("./call.js");
 
 function createPhoneCall() {
         
@@ -35,8 +34,7 @@ function createPhoneCall() {
     var topic = topic_list[Math.floor(Math.random() * topic_list.length)];
     console.log(topic);
 
-    var call = new Call('period', time, city, gender, age, prev, product, topic);
-    mongoModule.insertNewCall(call);
+    mongoModule.insertNewCall(time, city, gender, age, prev, product, topic)
 
 }
 
