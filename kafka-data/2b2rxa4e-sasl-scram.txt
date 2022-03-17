@@ -1,0 +1,4 @@
+CLOUDKARAFKA_BROKERS=tricycle-01.srvs.cloudkafka.com:9094,tricycle-02.srvs.cloudkafka.com:9094,tricycle-03.srvs.cloudkafka.com:9094
+CLOUDKARAFKA_USERNAME=2b2rxa4e
+CLOUDKARAFKA_PASSWORD=j9-Vgl3xw9irInEnT-lb3U1P9SJnwYKw
+CLOUDKARAFKA_TOPIC_PREFIX=2b2rxa4e-

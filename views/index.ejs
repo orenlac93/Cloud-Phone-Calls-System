@@ -4,10 +4,15 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="Refresh" content="5">
+
+        <!--  -->
+        <meta http-equiv="Refresh" content="10">
+
         <title>Welcome</title>
         <script src="/reload/reload.js"></script>
         <link rel="stylesheet" type="text/css" href="./stylesheets/index.css" media="screen" />
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     </head>
 
     <body>
@@ -15,8 +20,8 @@
         <h1>Phone calls</h1>
         <hr>
         
-
-        <table>
+        <!-- table of phone calls  -->
+        <table id="tbUser">
           <thead>
             <tr>
               <th>Start Time</th>
@@ -30,6 +35,9 @@
           </thead>  
 
           <tbody>
+
+            
+            <!-- fill the table from database  -->
             <% if (locals.calls_) { %>
               <% var x = 1 %>
                  <% calls_.forEach(function(obj) { %>
@@ -42,6 +50,12 @@
                     <td><%= obj.PrevCalls %></td>
                     <td><%= obj.Product %></td>
                     <td><%= obj.Topic %></td>
+
+                    <!-- add button in the first row  -->
+                    <%if (x == 1){ %>
+                      <td><button class="btnDelete">End Call</button></td>
+                    <% } %>
+                    
               <% x++;}); %>
               <% } %>
 
@@ -49,6 +63,16 @@
           </tbody>           
 
         </table>
+
+        <!-- remove row on button click  -->
+        <script>
+          $(document).ready(function(){
+            $("#tbUser").on('click','.btnDelete',function(){
+                  $(this).closest('tr').remove();
+                  
+                });
+            });
+        </script>
 
     </body>
 </html>

@@ -1,9 +1,10 @@
 const date = require('date-and-time');
 var sleep = require('system-sleep');
-var mongoModule = require('./mongo-module.js')
+var mongoModule = require('./modules/mongo-module.js')
+
 
 function createPhoneCall() {
-        
+    
 
     const now = new Date();
         
@@ -35,7 +36,7 @@ function createPhoneCall() {
     console.log(topic);
 
     mongoModule.insertNewCall(time, city, gender, age, prev, product, topic)
-
+    
 }
 
 var numOfIterations = 10
@@ -46,8 +47,10 @@ var timeToWait = num_of_seconds*1000
 for (let i = 0; i < numOfIterations; i++){
     sleep(timeToWait);
     createPhoneCall();
+    
     console.log('\n');
-    num_of_seconds = Math.floor(Math.random() * 10) + 1;
+    num_of_seconds = Math.floor(Math.random() * 30) + 1;
     timeToWait = num_of_seconds*1000
+    
 }
 
