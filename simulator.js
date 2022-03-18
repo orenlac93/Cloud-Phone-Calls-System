@@ -36,21 +36,26 @@ function createPhoneCall() {
     console.log(topic);
 
     mongoModule.insertNewCall(time, city, gender, age, prev, product, topic)
+    return [time, city, gender, age, prev, product, topic];
     
 }
-
-var numOfIterations = 10
-
-var num_of_seconds = Math.floor(Math.random() * 30) + 1;
-var timeToWait = num_of_seconds*1000
-
-for (let i = 0; i < numOfIterations; i++){
-    sleep(timeToWait);
-    createPhoneCall();
+exports.simulatePhoneCalls = function (numOfPhoneCallToSimulate = 10) {
     
-    console.log('\n');
-    num_of_seconds = Math.floor(Math.random() * 30) + 1;
-    timeToWait = num_of_seconds*1000
-    
+    if (numOfPhoneCallToSimulate == 1) {
+        return createPhoneCall();
+    }
+    var num_of_seconds = Math.floor(Math.random() * 30) + 1;
+    var timeToWait = num_of_seconds * 1000
+    var phoneCalls = [];
+    for (let i = 0; i < numOfPhoneCallToSimulate; i++) {
+        sleep(timeToWait);
+        phoneCalls.push(createPhoneCall());
+        console.log('\n');
+        num_of_seconds = Math.floor(Math.random() * 30) + 1;
+        timeToWait = num_of_seconds * 1000
+    }
+    return phoneCalls;
+
+
 }
 
