@@ -9,6 +9,7 @@ const port = 8080
 
 
 var mongoModule = require('./modules/mongo-module.js');
+var mysqlModule = require('./modules/mysql-module.js');
 
 
 app.engine('html', require('ejs').renderFile);
@@ -16,6 +17,11 @@ app.set('view engine', 'ejs');
 
 
 var calls   // store the phone calls collection
+
+/* create my sql connection */
+
+mysqlModule.connectToMySQL();
+
 
 
 
