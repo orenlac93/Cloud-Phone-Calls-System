@@ -1,96 +1,90 @@
-var mysql = require('mysql2');
+let mysql = require('mysql');
 
 
 
-exports.insertNewCall = function (/*time_, city_, gender_, age_, prev_, product_, topic_*/Call) {
-    var con = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "0000", //insert your password here
-        database: new Date().toLocaleDateString().replace('/', 'x').replace('/', 'x')
+
+exports.insertCall = function (call) {
+
+    let connection = mysql.createConnection({
+        multipleStatements: true,
+        host: 'localhost',
+        user: 'root',
+        password: '0000', 
+        database: 'phoneCalls' 
     });
 
 
-    var createDB = "CREATE DATABASE IF NOT EXISTS ".concat(new Date().toLocaleDateString().replace('/', 'x').replace('/','x'));
-    con.connect(function (err) {
-        if (err) throw err;
-        console.log("Connected!");
-        con.query(createDB, function (err, result) {
-            if (err) throw err;
-            console.log("Database created and named :".concat(new Date().toLocaleDateString()));
+    connection.connect(function(err) {
+        if (err) {
+          return console.error('error: ' + err.message);
+        }
+        console.log('Connected to the MySQL server');
+
+        let query = `
+            CREATE DATABASE IF NOT EXISTS phoneCalls;
+        `;
+
+
+
+        connection.query(query, function(err, results, fields) {
+            if (err) {
+              console.log(err.message);
+            }
+            console.log("Database created");     
         });
-        var createTable = "CREATE TABLE IF NOT EXISTS customers ";
-        //time, city, gender, age, prev, product, topic
-        createTable = createTable.concat("(time VARCHAR(255), ");
-        createTable = createTable.concat("city VARCHAR(255), ");
-        createTable = createTable.concat("gender VARCHAR(255), ");
-        createTable = createTable.concat("age VARCHAR(255), ");
-        createTable = createTable.concat("prev VARCHAR(255), ");
-        createTable = createTable.concat("product VARCHAR(255), ");
-        createTable = createTable.concat("topic VARCHAR(255)) ");
-        con.query(createTable, function (err, result) {
-            if (err) throw err;
-            console.log("Table created");
-        });
-        var insertQuery = "INSERT INTO customers "
-        insertQuery = insertQuery.concat('(time,city,gender,age,prev,product,topic)')
-        insertQuery = insertQuery.concat(' VALUES ')
-        insertQuery = insertQuery.concat('(\'')
-        insertQuery = insertQuery.concat(Call[0].toString().concat('\',\'')/*time*/);
-        insertQuery = insertQuery.concat(Call[1].toString().concat('\',\'')/*city*/);
-        insertQuery = insertQuery.concat(Call[2].toString().concat('\',\'')/*gender*/);
-        insertQuery = insertQuery.concat(Call[3].toString().concat('\',\'')/*age*/);
-        insertQuery = insertQuery.concat(Call[4].toString().concat('\',\'')/*prev*/);
-        insertQuery = insertQuery.concat(Call[5].toString().concat('\',\'')/*product*/);
-        insertQuery = insertQuery.concat(Call[6].toString()/*topic*/);
-        insertQuery = insertQuery.concat('\')')
-        con.query(insertQuery, function (err, result) {
-            if (err) throw err;
-            console.log("1 record inserted");
+
+        let query2 = `
+            CREATE TABLE IF NOT EXISTS customers 
+            (time VARCHAR(255), 
+            city VARCHAR(255), 
+            gender VARCHAR(255), 
+            age VARCHAR(255), 
+            prev VARCHAR(255), 
+            product VARCHAR(255), 
+            topic VARCHAR(255));
+        `;
+
+        connection.query(query2, function(err, results, fields) {
+            if (err) {
+              console.log(err.message);
+            }
+            console.log('Table created');
         });
         
-    });
-    //die hard
-    //con.on('error', function () { });
-    //con.end();
-};
+        
+        // insert statement
+        let sql = `
+            INSERT INTO customers 
+            (time, city, gender, age, prev, product, topic) 
+            VALUES ?
+        `;
 
-exports.printDB = function () {
-    var con = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "0000", //insert your password here
-        database: new Date().toLocaleDateString().replace('/', 'x').replace('/', 'x')
-    });
+        //values = [['17.03.2022 22:57:39', 'Beersheba', 'female', '73', '9', 'all', 'joining']] 
+        values = [call]
 
-    var printDBq = "SELECT * FROM customers"
-    con.query(printDBq, function (err, result, fields) {
-        if (err) throw err;
-        console.log(result);
-    });
-    //Disconnect hardly
-    con.on('error', function () { });
-    con.end();
-};
-
-exports.deleteTable = function () {
-    var con = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "0000",
-        database: new Date().toLocaleDateString().replace('/', 'x').replace('/', 'x')
-    });
-
-    con.connect(function (err) {
-        if (err) throw err;
-        var sql = "DROP TABLE customers";
-        con.query(sql, function (err, result) {
-            if (err) throw err;
-            console.log("Table deleted");
+        // execute the insert statement
+        connection.query(sql, [values], function(err, results, fields) {
+            if (err) {
+              console.log(err.message);
+            }
+            console.log('New Value Inserted');
         });
-    });
 
-    con.end()
-};
+    
+        
+        connection.end(function(err) {
+            if (err) {
+              return console.log(err.message);
+            }
+            console.log('Connection to the MySQL server is closed');
+        });  
+          
+    });
+      
+      
+      
+
+};  
+
 
 

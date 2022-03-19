@@ -1,6 +1,8 @@
 const date = require('date-and-time');
 var sleep = require('system-sleep');
 var mongoModule = require('./modules/mongo-module.js')
+var mysqlModule = require('./modules/mysql-module.js');
+//const kafka = require('./modules/kafka-module');
 
 
 function createPhoneCall() {
@@ -35,27 +37,24 @@ function createPhoneCall() {
     var topic = topic_list[Math.floor(Math.random() * topic_list.length)];
     console.log(topic);
 
-    mongoModule.insertNewCall(time, city, gender, age, prev, product, topic)
-    return [time, city, gender, age, prev, product, topic];
+    //mongoModule.insertNewCall(time, city, gender, age, prev, product, topic)
+    mysqlModule.insertCall([time, city, gender, age, prev, product, topic]);
+    
     
 }
-exports.simulatePhoneCalls = function (numOfPhoneCallToSimulate = 10) {
+
+var numOfIterations = 10
+
+var num_of_seconds = Math.floor(Math.random() * 30) + 1;
+var timeToWait = num_of_seconds*1000
+
+for (let i = 0; i < numOfIterations; i++){
+    sleep(timeToWait);
+    createPhoneCall();
     
-    if (numOfPhoneCallToSimulate == 1) {
-        return createPhoneCall();
-    }
-    var num_of_seconds = Math.floor(Math.random() * 30) + 1;
-    var timeToWait = num_of_seconds * 1000
-    var phoneCalls = [];
-    for (let i = 0; i < numOfPhoneCallToSimulate; i++) {
-        sleep(timeToWait);
-        phoneCalls.push(createPhoneCall());
-        console.log('\n');
-        num_of_seconds = Math.floor(Math.random() * 30) + 1;
-        timeToWait = num_of_seconds * 1000
-    }
-    return phoneCalls;
-
-
+    console.log('\n');
+    num_of_seconds = Math.floor(Math.random() * 30) + 1;
+    timeToWait = num_of_seconds*1000
+    
 }
 
