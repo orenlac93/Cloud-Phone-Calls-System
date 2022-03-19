@@ -9,6 +9,8 @@ const port = 8080
 
 
 var mongoModule = require('./modules/mongo-module.js');
+var mysqlModule = require('./modules/mysql-module.js');
+var simulator = require('./simulator.js');
 
 
 app.engine('html', require('ejs').renderFile);
@@ -16,8 +18,13 @@ app.set('view engine', 'ejs');
 
 
 var calls   // store the phone calls collection
+var phoneCall = simulator.simulatePhoneCalls(1);
 
+/* insert call to mySQL local database */
 
+mysqlModule.insertNewCall(phoneCall);
+mysqlModule.printDB();
+mysqlModule.deleteTable();
 
 /* show all the users in mongodb */
 
