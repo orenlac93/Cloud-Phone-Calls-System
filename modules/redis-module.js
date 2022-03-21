@@ -1,6 +1,6 @@
 const redis = require('redis')
 var app = require('express')();
-var server = require('http').Server(app);
+
 
 
 class redisInstance  {
@@ -18,7 +18,9 @@ class redisInstance  {
 		/*Delete DB every 24 hrs*/
 		this.intervalId = setInterval(function () {
 			deleteAll();
-		}, 60000*60*24);
+		}, 60000 * 60 * 24);
+		app.engine('html', require('ejs').renderFile);
+		app.set('view engine', 'html');
 	}
 	createConnection() {
 		this.client.connect();
@@ -62,9 +64,35 @@ class redisInstance  {
 		this.state = "Disconnected";
 		clearInterval(this.intervalId)
 	}
+	updateDashboard = function() {
+		app.get('/', function (req, res) {
+			//publish here 
+			redisClient.publish("message", "{\"message\":\"Hello from Redis\"}", function () {
+		});
+
+			res.send("Update has been sent to dashboard");
+		});
+
+    }
 
 };
 
+//CallBacks, to be moved into the class
+app.use(function (req, res, next) {
+	var err = new Error('Not Found');
+	err.status = 404;
+	next(err);
+});
+
+
+redisClient.on('connect', function () {
+	console.log('Sender connected to Redis');
+});
+app.listen(6062, function () {
+	console.log('Sender is running on port 6062');
+});
+
+//Testing
 inst = new redisInstance();
 inst.test();
 inst.incCutoffs();
