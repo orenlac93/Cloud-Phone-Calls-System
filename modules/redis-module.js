@@ -1,7 +1,9 @@
 const redis = require('redis')
 var app = require('express')();
+var dashb = require('./dashboard-module.js')
 
-
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
 
 class redisInstance  {
 	
@@ -19,8 +21,13 @@ class redisInstance  {
 		this.intervalId = setInterval(function () {
 			deleteAll();
 		}, 60000 * 60 * 24);
-		app.engine('html', require('ejs').renderFile);
-		app.set('view engine', 'html');
+
+		
+		this.client.on('connect', function () {
+			console.log('Connected to Redis');
+		});
+		
+
 	}
 	createConnection() {
 		this.client.connect();
@@ -64,38 +71,15 @@ class redisInstance  {
 		this.state = "Disconnected";
 		clearInterval(this.intervalId)
 	}
-	updateDashboard = function() {
-		app.get('/', function (req, res) {
-			//publish here 
-			redisClient.publish("message", "{\"message\":\"Hello from Redis\"}", function () {
-		});
-
-			res.send("Update has been sent to dashboard");
-		});
-
-    }
-
 };
 
-//CallBacks, to be moved into the class
-app.use(function (req, res, next) {
-	var err = new Error('Not Found');
-	err.status = 404;
-	next(err);
-});
-
-
-redisClient.on('connect', function () {
-	console.log('Sender connected to Redis');
-});
-app.listen(6062, function () {
-	console.log('Sender is running on port 6062');
-});
-
-//Testing
 inst = new redisInstance();
 inst.test();
 inst.incCutoffs();
 inst.incCutoffs();
 inst.incCutoffs();
 inst.incCutoffs();
+
+dashboard = new dashb();
+dashboard.updateData(inst.client.get("joins"), inst.client.get("complains"), inst.client.get("cutoffs"), inst.client.get("joins"), inst.client.get("joins"))
+dashboard.updateDisplay();
