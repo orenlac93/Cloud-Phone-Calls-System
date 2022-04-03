@@ -8,6 +8,7 @@ const io = new Server(server);
 
 var sleep = require('system-sleep');
 var redisModule = require('./modules/redis-module.js');
+var mysqlModule = require('./modules/mysql-module.js');
 
 
 
@@ -22,55 +23,110 @@ app.use(express.static("public"));
 
 
 
-number1 = Math.floor(Math.random() * 100) + 1;
-number2 = Math.floor(Math.random() * 100) + 1;
-number3 = Math.floor(Math.random() * 100) + 1;
-number4 = Math.floor(Math.random() * 100) + 1;
-number5 = Math.floor(Math.random() * 100) + 1;
-
-var values = [number1, number2, number3, number4, number5];
-
-
-
-
-
-  
-
-app.get("/", function(req, res) { 
-
-    res.render("dashboard.ejs");
-}); 
-
-
-
-  
-io.on('connection', (socket) => {
-    console.log('a user connected');
-    socket.on('disconnect', () => {
-      console.log('user disconnected');
-    });
-    socket.on('chat message', (msg) => {
-        console.log('message: ' + msg);
-        io.emit('chat message', values);
-    });
-});
-
-
-
-server.listen(5000, () => {
-    console.log('listening on *:5000');
+mysqlModule.getData(function(result){
+    data = result;
     
-    while(true){
-        sleep(1000);
+    overall = data.length;
+    joining = 0;
+    cutoff = 0;
+    complaint = 0;
+    service = 0;
 
-        number1 = Math.floor(Math.random() * 100) + 1;
-        number2 = Math.floor(Math.random() * 100) + 1;
-        number3 = Math.floor(Math.random() * 100) + 1;
-        number4 = Math.floor(Math.random() * 100) + 1;
-        number5 = Math.floor(Math.random() * 100) + 1;
+    data.forEach(element => {
+        if(element.topic == 'joining'){
+            joining++;
+        }
+        else if(element.topic == 'cutoff'){
+            cutoff++;
+        }
+        else if(element.topic == 'complaint'){
+            complaint++;
+        }
+        else if(element.topic == 'service'){
+            service++;
+        }
 
-        values = [number1, number2, number3, number4, number5];
-    }    
-});
+    });
+    
+
+
+    number1 = joining;
+    number2 = cutoff;
+    number3 = complaint;
+    number4 = service;
+    number5 = overall;
+
+    var values = [number1, number2, number3, number4, number5];
+
+
+
+
+
+    
+
+    app.get("/", function(req, res) { 
+
+        res.render("dashboard.ejs");
+    }); 
+
+
+
+        
+
+    
+    io.on('connection', (socket) => {
+        console.log('a user connected');
+        socket.on('disconnect', () => {
+        console.log('user disconnected');
+        });
+        socket.on('chat message', (msg) => {
+            console.log('message: ' + msg);
+            io.emit('chat message', values);
+        });
+    });
+
+
+
+    server.listen(5000, () => {
+        console.log('listening on *:5000');
+        
+        while(true){
+            sleep(1000);
+
+            data = result;
+    
+            overall = data.length;
+            joining = 0;
+            cutoff = 0;
+            complaint = 0;
+            service = 0;
+
+            data.forEach(element => {
+                if(element.topic == 'joining'){
+                    joining++;
+                }
+                else if(element.topic == 'cutoff'){
+                    cutoff++;
+                }
+                else if(element.topic == 'complaint'){
+                    complaint++;
+                }
+                else if(element.topic == 'service'){
+                    service++;
+                }
+        
+            });
+            
+        
+        
+            number1 = joining;
+            number2 = cutoff;
+            number3 = complaint;
+            number4 = service;
+            number5 = overall;
+
+            values = [number1, number2, number3, number4, number5];
+        }    
+    });
  
-
+});

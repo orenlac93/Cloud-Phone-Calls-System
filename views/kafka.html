@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Kafka</title>
+
+        <style> 
+            h1 {
+                color: rgb(255, 255, 255);
+                font-family: verdana;
+                font-size: 150%;
+                border: 2px solid rgb(30, 32, 32);
+                padding: 30px;
+                background-color: #04AA6D;
+            }
+            h2 {
+                color: rgb(255, 255, 255);
+                font-family: verdana;
+                font-size: 100%;
+                border: 2px solid rgb(30, 32, 32);
+                padding: 30px;
+                background-color: #04AA6D;
+            }
+            h3 {
+                color: rgb(71, 86, 88);
+                font-family: verdana;
+                font-size: 100%;
+                border: 1px solid rgb(30, 32, 32);
+                padding: 2px;
+                background-color: #edf5f2;
+            }
+
+            form {
+                color: rgb(255, 255, 255);
+                border: 2px solid rgb(30, 32, 32);
+                padding: 30px;
+                background-color: #04AA6D;
+            }
+            button {
+                color: rgb(255, 255, 255);
+                font-family: verdana;
+                font-size: 100%;
+                border: 2px solid rgb(30, 32, 32);
+                padding: 20px;
+                background-color: #9aceb8;
+            }
+        
+
+        </style>
+    </head>
+
+    <body>
+
+        <h1>kafka broker</h1>
+        <hr>
+        <h2>New Call Data Received</h2>
+        <hr>
+        <div id="div"></div>
+
+        <ul id="messages"></ul>
+
+        <h3><%= call_.StartTime %></h3>
+        <h3><%= call_.City %></h3>
+        <h3><%= call_.Gender %></h3>
+        <h3><%= call_.Age %></h3>
+        <h3><%= call_.PrevCalls %></h3>
+        <h3><%= call_.Product %></h3>
+        <h3><%= call_.Topic %></h3>
+
+        
+        <form id="form" action="/send">      
+          <button>Send</button>
+        </form>
+
+        <!-- 
+        <a href='/send'>Send</a> <br/><a href=''>View</a>
+        -->
+    </body>
+
+</html>

@@ -2,12 +2,23 @@
 const express = require('express');
 const app = express();
 var server = require('http').createServer(app);
+const bodyParser = require('body-parser');
 
 var mongoModule = require('./modules/mongo-module.js')
 
+const kafka = require('./modules/kafka-module');
+
+
+
 const port = 3000
 
-const kafka = require('./modules/kafka-module');
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'ejs');
+
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(express.static('public'))
+
 
 
 var call   // store the current phone call
@@ -26,7 +37,12 @@ mongoModule.showData((err, result) => {
 
 
 
-app.get('/', (req, res) => res.send("<a href='/send'>Send</a> <br/><a href=''>View</a>"));
+//app.get('/', (req, res) => res.send("<a href='/send'>Send</a> <br/><a href=''>View</a>"));
+
+app.get("/", function(req, res) { 
+    res.render("kafka.html", {call_: call});
+}); 
+
 app.get('/send', (req, res) => {
 
 
