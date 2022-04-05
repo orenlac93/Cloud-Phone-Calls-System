@@ -43,6 +43,7 @@
                  <% calls_.forEach(function(obj) { %>
                  <tr>
                     
+                    <!--
                     <td><%= obj.StartTime %></td>
                     <td><%= obj.City %></td>
                     <td><%= obj.Gender %></td>
@@ -50,6 +51,16 @@
                     <td><%= obj.PrevCalls %></td>
                     <td><%= obj.Product %></td>
                     <td><%= obj.Topic %></td>
+                    -->
+
+
+                    <td><%= obj.time %></td>
+                    <td><%= obj.city %></td>
+                    <td><%= obj.gender %></td>
+                    <td><%= obj.age %></td>
+                    <td><%= obj.prev %></td>
+                    <td><%= obj.product %></td>
+                    <td><%= obj.topic %></td>
 
                     <!-- add button in the first row  -->
                     <%if (x == 1){ %>

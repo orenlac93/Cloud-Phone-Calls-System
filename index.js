@@ -7,46 +7,36 @@ var sleep = require('system-sleep');
 
 const port = 8080
 
+var mysqlModule = require('./modules/mysql-module.js');
 
-var mongoModule = require('./modules/mongo-module.js');
 
 
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'ejs');
 
 
-var calls   // store the phone calls collection
-
-
-
-/* show all the users in mongodb */
-
-mongoModule.showData((err, result) => {
-  if(err) { 
-    console.log(err)
-  } 
-  else { 
-    calls = result
-   
-  }
-})  
-
-
-
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static('public'))
 
-app.get('/', function (req, res) {
+
+mysqlModule.getData(function(result){
+
+  calls = result;  // store the phone calls collection
+  console.log(calls);
 
 
-    res.render('index.ejs', {calls_: calls});
-    
-    //res.sendFile(path.join(__dirname, 'views/index.html'));
- 
-})
+
+  app.get('/', function (req, res) {
 
 
+      res.render('index.ejs', {calls_: calls});
+      
+      //res.sendFile(path.join(__dirname, 'views/index.html'));
+  
+  })
+
+});
 
 
 
@@ -55,14 +45,11 @@ app.listen(port, () => {
 
   while(true){
     sleep(1000);
-    mongoModule.showData((err, result) => {
-      if(err) { 
-        console.log(err)
-      } 
-      else { 
-        calls = result
-      }
-    })
+            
+    mysqlModule.getData(function(result){
+
+      calls = result;  // store the phone calls collection
+    });  
   } 
 
 

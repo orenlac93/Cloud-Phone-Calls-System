@@ -12,9 +12,11 @@ const kafkaConf = {
   "sasl.password": "j9-Vgl3xw9irInEnT-lb3U1P9SJnwYKw"
 };
 
+
 const prefix = "2b2rxa4e-";
 const topic = `${prefix}cloud-app`;
 const producer = new Kafka.Producer(kafkaConf);
+
 
 const genMessage = m => new Buffer.alloc(m.length,m);
 
@@ -26,13 +28,13 @@ producer.on("ready", function(arg) {
 
 producer.connect();
 
+
 module.exports.publish= function(msg)
 {
-  
+
   
   m=JSON.stringify(msg);
   producer.produce(topic, -1, genMessage(m), uuid.v4());     
 
-  
 }
 
