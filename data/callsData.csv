@@ -1,0 +1,11 @@
+_id,StartTime,City,Gender,Age,PrevCalls,Product,Topic
+624c69cf4f0aded9f418642b,05.04.2022 19:09:50,Beersheba,female,82,9,internet,joining
+624c69d64f0aded9f418642c,05.04.2022 19:09:58,Beersheba,male,41,6,cables,service
+624c69ec4f0aded9f418642d,05.04.2022 19:10:20,Beersheba,male,97,8,all,cutoff
+624c69fd4f0aded9f418642e,05.04.2022 19:10:37,Tel Aviv,female,82,18,internet,joining
+624c6a0e4f0aded9f418642f,05.04.2022 19:10:54,Jerusalem,female,87,4,cables,cutoff
+624c6a164f0aded9f4186430,05.04.2022 19:11:02,Beersheba,female,44,3,all,joining
+624c6a2b4f0aded9f4186431,05.04.2022 19:11:23,Haifa,male,18,0,cables,complaint
+624c6a2c4f0aded9f4186432,05.04.2022 19:11:24,Haifa,male,70,4,cables,joining
+624c6a394f0aded9f4186433,05.04.2022 19:11:37,Tel Aviv,female,39,11,all,joining
+624c6a4c4f0aded9f4186434,05.04.2022 19:11:56,Tel Aviv,male,44,6,all,complaint

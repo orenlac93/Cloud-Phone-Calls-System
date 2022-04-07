@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>prediction</title>
+
+        <style> 
+            h1 {
+                color: rgb(255, 255, 255);
+                font-family: verdana;
+                font-size: 150%;
+                border: 2px solid rgb(30, 32, 32);
+                padding: 30px;
+                background-color: #04AA6D;
+            }
+            h2 {
+                color: rgb(255, 255, 255);
+                font-family: verdana;
+                font-size: 100%;
+                border: 2px solid rgb(30, 32, 32);
+                padding: 30px;
+                background-color: #04AA6D;
+            }
+
+            form {
+                color: rgb(255, 255, 255);
+                border: 2px solid rgb(30, 32, 32);
+                padding: 30px;
+                background-color: #04AA6D;
+            }
+            button {
+                color: rgb(255, 255, 255);
+                font-family: verdana;
+                font-size: 100%;
+                border: 2px solid rgb(30, 32, 32);
+                padding: 20px;
+                background-color: #9aceb8;
+            }
+        
+
+        </style>
+    </head>
+
+    <body>
+
+        <h1>Machine Learning</h1>
+        <hr>
+        <h2>write the system data to file or get prediction to phone call</h1>
+        <hr>
+
+        <div id="div"></div>
+
+        <ul id="messages"></ul>
+
+        
+        <form id="form" action="/write">      
+          <button>Write data to CSV file</button>
+        </form>
+
+        <form id="form" action="">      
+            <button>Get prediction</button>
+        </form>
+
+        <!-- 
+        <a href='/send'>Send</a> <br/><a href=''>View</a>
+        -->
+    </body>
+
+</html>

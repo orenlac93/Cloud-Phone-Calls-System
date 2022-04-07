@@ -2,6 +2,10 @@ var MongoClient = require('mongodb').MongoClient;
 // var url = "mongodb://172.18.0.2:27017/";    for specific docker container
 var url = "mongodb://localhost:27017/"
 
+const fastCsv = require("fast-csv");
+const fs = require("fs");
+const ws = fs.createWriteStream("data/callsData.csv");
+
 
 
 /* show all the calls in the data base */
@@ -62,4 +66,33 @@ exports.insertNewCall = function (time_, city_, gender_, age_, prev_, product_, 
     
 };
 
+
+
+/* write the data to csv file */
+exports.writeToCSV = function (query) {
     
+
+    MongoClient.connect(
+        url,
+        { useNewUrlParser: true, useUnifiedTopology: true },
+        (err, client) => {
+          if (err) throw err;
+          client
+            .db("phoneCalls")
+            .collection("calls")
+            .find({})
+            .toArray((err, data) => {
+              if (err) throw err;
+              console.log(data);
+              fastCsv
+                .write(data, { headers: true })
+                .on("finish", function() {
+                  console.log("Write to callsData.csv successfully!");
+                })
+                .pipe(ws);
+              client.close();
+            });
+        }
+      );
+    
+};
