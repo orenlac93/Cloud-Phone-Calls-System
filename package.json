@@ -9,6 +9,7 @@
   "author": "oren lacker",
   "license": "ISC",
   "dependencies": {
+    "bigml": "^1.25.2",
     "date-and-time": "^2.1.0",
     "ejs": "^3.1.6",
     "express": "^4.17.2",

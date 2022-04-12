@@ -5,7 +5,10 @@ const app = express();
 var server = require('http').createServer(app);
 const bodyParser = require('body-parser');
 
-const port = 3000
+var bigml = require('bigml');
+
+
+const port = 4000
 
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'ejs');
@@ -14,9 +17,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static('public'))
 
+var topicPrediction;
 
 
-app.get("/", function(req, res) { 
+app.get("/", function(req, res) {
+
+    mongoModule.writeToCSV(); 
+    
     res.render("prediction.html");
 });
 
@@ -25,6 +32,45 @@ app.get('/write', (req, res) => {
     mongoModule.writeToCSV();    
 
     res.send('writing the data to csv file')
+});
+
+app.get('/trainModel', (req, res) => {
+
+    
+
+    // replace the username and the API KEY of your own
+    var connection = new bigml.BigML('ORENLAC93','3c4666183ab561cc6378906c7a3d4b2e2edc82e2')
+
+    var source = new bigml.Source(connection);
+    source.create('./data/callsData.csv', function(error, sourceInfo) {
+    if (!error && sourceInfo) {
+        var dataset = new bigml.Dataset(connection);
+        dataset.create(sourceInfo, function(error, datasetInfo) {
+        if (!error && datasetInfo) {
+            var model = new bigml.Model(connection);
+            model.create(datasetInfo, function (error, modelInfo) {
+            if (!error && modelInfo) {
+                var prediction = new bigml.Prediction(connection);
+                prediction.create(modelInfo, {'Age': 37},function(error, prediction) { 
+                    //console.log(JSON.stringify(prediction));
+                    topicPrediction = prediction.object.output;
+                    console.log(topicPrediction)});
+                    
+            }
+            });
+        }
+        });
+    }
+    }); 
+    
+    
+
+    res.send('train model...')
+});
+
+app.get('/prediction', (req, res) => {
+
+    res.send(`prediction: ${topicPrediction}`)
 });
 
 

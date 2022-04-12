@@ -60,7 +60,38 @@
           <button>Write data to CSV file</button>
         </form>
 
-        <form id="form" action="">      
+        <form id="form" action="/trainModel">      
+            <button>Train Model</button>
+        </form>
+
+        <form id="form" action="/prediction">  
+
+            <label for="age">Age:</label>
+            <input type="text" id="age" name="age"><br><br>
+
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city"><br><br>  
+
+
+            <label for="gender">Gender:</label><br>
+             
+            <input type="radio" id="gender" name="gender" value="male">
+            <label for="male">Male</label><br>
+            <input type="radio" id="gender" name="gender" value="female">
+            <label for="female">Female</label><br><br>
+
+
+            <label for="product">Product:</label><br> 
+
+            <input type="radio" id="product" name="product" value="internet">
+            <label for="internet">Internet</label><br>
+            <input type="radio" id="product" name="product" value="cables">
+            <label for="cables">Cables</label><br>
+            <input type="radio" id="product" name="product" value="cellular">
+            <label for="cellular">Cellular</label><br>
+            <input type="radio" id="product" name="product" value="all">
+            <label for="all">All</label><br><br> 
+
             <button>Get prediction</button>
         </form>
 
