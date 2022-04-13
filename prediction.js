@@ -38,7 +38,7 @@ app.get('/trainModel', (req, res) => {
 
     
 
-    // replace the username and the API KEY of your own
+    // username and the API KEY 
     var connection = new bigml.BigML('ORENLAC93','3c4666183ab561cc6378906c7a3d4b2e2edc82e2')
 
     var source = new bigml.Source(connection);
@@ -51,10 +51,11 @@ app.get('/trainModel', (req, res) => {
             model.create(datasetInfo, function (error, modelInfo) {
             if (!error && modelInfo) {
                 var prediction = new bigml.Prediction(connection);
-                prediction.create(modelInfo, {'Age': 37},function(error, prediction) { 
+                prediction.create(modelInfo, {'City': 'Tel Aviv', 'Gender': 'female', 'Age': 40, 'Product': 'internet'},function(error, prediction) { 
                     //console.log(JSON.stringify(prediction));
                     topicPrediction = prediction.object.output;
-                    console.log(topicPrediction)});
+                    console.log(topicPrediction)
+                });
                     
             }
             });

@@ -9,3 +9,36 @@ _id,StartTime,City,Gender,Age,PrevCalls,Product,Topic
 624c6a2c4f0aded9f4186432,05.04.2022 19:11:24,Haifa,male,70,4,cables,joining
 624c6a394f0aded9f4186433,05.04.2022 19:11:37,Tel Aviv,female,39,11,all,joining
 624c6a4c4f0aded9f4186434,05.04.2022 19:11:56,Tel Aviv,male,44,6,all,complaint
+625721a1f30ae32ac4595c9e,13.04.2022 22:16:49,Haifa,male,92,9,internet,complaint
+625721bff30ae32ac4595c9f,13.04.2022 22:17:19,Tel Aviv,female,40,0,internet,service
+625721dbf30ae32ac4595ca0,13.04.2022 22:17:47,Haifa,male,93,2,internet,service
+625721dcf30ae32ac4595ca1,13.04.2022 22:17:48,Beersheba,female,68,8,cellular,complaint
+62572439880703c507e2d0f0,13.04.2022 22:27:53,Tel Aviv,female,48,12,cellular,cutoff
+62572443880703c507e2d0f1,13.04.2022 22:28:03,Jerusalem,male,39,16,cellular,cutoff
+62572461880703c507e2d0f2,13.04.2022 22:28:33,Jerusalem,male,43,13,cellular,complaint
+62572466880703c507e2d0f3,13.04.2022 22:28:38,Beersheba,female,38,10,cellular,cutoff
+6257246f880703c507e2d0f4,13.04.2022 22:28:47,Haifa,male,29,15,internet,joining
+62572475880703c507e2d0f5,13.04.2022 22:28:53,Jerusalem,male,77,4,internet,cutoff
+6257247a880703c507e2d0f6,13.04.2022 22:28:58,Haifa,female,31,5,internet,cutoff
+62572485880703c507e2d0f7,13.04.2022 22:29:09,Jerusalem,male,96,3,internet,service
+625725be3ac1b44766f33212,13.04.2022 22:34:22,Tel Aviv,male,96,14,cables,joining
+625725d43ac1b44766f33213,13.04.2022 22:34:44,Tel Aviv,male,83,15,cellular,cutoff
+625725ec3ac1b44766f33214,13.04.2022 22:35:08,Haifa,female,26,12,internet,service
+625725f73ac1b44766f33215,13.04.2022 22:35:19,Jerusalem,female,58,9,cellular,complaint
+6257260a3ac1b44766f33216,13.04.2022 22:35:38,Jerusalem,female,76,3,cellular,complaint
+625726123ac1b44766f33217,13.04.2022 22:35:46,Jerusalem,male,19,0,all,joining
+625726a7fec02d47628eb7bc,13.04.2022 22:38:15,Haifa,female,91,9,all,joining
+625726c2fec02d47628eb7bd,13.04.2022 22:38:42,Jerusalem,female,84,10,cables,service
+625726ddfec02d47628eb7be,13.04.2022 22:39:09,Jerusalem,female,47,18,cables,service
+625726e8fec02d47628eb7bf,13.04.2022 22:39:19,Beersheba,male,85,16,cables,service
+625726fafec02d47628eb7c0,13.04.2022 22:39:38,Haifa,male,82,3,internet,complaint
+62572ec39a00d28edb6f1c55,13.04.2022 23:12:50,Beersheba,male,23,14,all,service
+62572eca9a00d28edb6f1c56,13.04.2022 23:12:58,Tel Aviv,male,19,15,internet,service
+62572ed89a00d28edb6f1c57,13.04.2022 23:13:12,Beersheba,male,32,16,cables,service
+62572ee39a00d28edb6f1c58,13.04.2022 23:13:23,Haifa,male,89,6,cables,complaint
+62572ef89a00d28edb6f1c59,13.04.2022 23:13:44,Tel Aviv,male,90,7,cellular,service
+62572efa9a00d28edb6f1c5a,13.04.2022 23:13:46,Beersheba,male,76,0,cables,joining
+62572f149a00d28edb6f1c5b,13.04.2022 23:14:12,Beersheba,female,21,7,all,complaint
+62572f229a00d28edb6f1c5c,13.04.2022 23:14:26,Beersheba,female,79,7,cables,cutoff
+62572f3c9a00d28edb6f1c5d,13.04.2022 23:14:52,Haifa,female,97,7,cables,service
+62572f479a00d28edb6f1c5e,13.04.2022 23:15:03,Jerusalem,female,36,9,cables,joining
