@@ -27,6 +27,8 @@ app.get("/", function(req, res) {
     res.render("prediction.html");
 });
 
+
+/* write the current data from mongoDB to csv file */
 app.get('/write', (req, res) => {
 
     mongoModule.writeToCSV();    
@@ -34,6 +36,8 @@ app.get('/write', (req, res) => {
     res.send('writing the data to csv file')
 });
 
+
+/* train new model based on the mongoDB current data */
 app.get('/trainModel', (req, res) => {
 
     
@@ -69,9 +73,22 @@ app.get('/trainModel', (req, res) => {
     res.send('train model...')
 });
 
-app.get('/prediction', (req, res) => {
 
-    res.send(`prediction: ${topicPrediction}`)
+/* get prediction from existing model */
+app.get('/prediction', (req, res) => {
+    // username and the API KEY 
+    var connection = new bigml.BigML('ORENLAC93','3c4666183ab561cc6378906c7a3d4b2e2edc82e2')
+
+    var prediction = new bigml.Prediction(connection);
+
+    
+    prediction.create('model/62593e0d5198db5eed000299', {'City': 'Tel Aviv', 'Gender': 'female', 'Age': 40, 'Product': 'internet'},function(error, prediction) { 
+        //console.log(JSON.stringify(prediction));
+        topicPrediction = prediction.object.output;
+        console.log(topicPrediction)
+    });
+    //res.send(`prediction: ${topicPrediction}`)
+    res.render("showPrediction.html", {topicPrediction_: topicPrediction});
 });
 
 

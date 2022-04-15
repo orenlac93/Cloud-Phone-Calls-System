@@ -4,6 +4,14 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+
+        <!-- progress bar -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 
         <title>DashBoard</title>
         
@@ -20,6 +28,12 @@
         -->
 
         <style> 
+            body {
+
+              background-color: #3e4745;
+
+            }
+
             h1 {
                 color: rgb(255, 255, 255);
                 font-family: verdana;
@@ -28,6 +42,16 @@
                 padding: 30px;
                 background-color: #04AA6D;
             }
+            h2 {
+                color: rgb(0, 0, 0);
+                font-family: verdana;
+                font-size: 100%;
+                border: 2px solid rgb(30, 32, 32);
+                padding: 10px;
+                width: 500px;
+                background-color: #04AA6D;
+            }
+
             div {
               width: 500px;
               height: 100px;
@@ -37,6 +61,9 @@
               
               animation-iteration-count: 100;
             }
+
+
+
             
             @keyframes example {
               from {background-color: #04AA6D;}
@@ -44,11 +71,81 @@
               
             }
 
+            .loader {
+                border: 16px solid #f3f3f3;
+                border-radius: 50%;
+                border-top: 16px solid #3498db;
+                width: 120px;
+                height: 120px;
+                position: relative;
+                left: 800px;
+                top: -100px;
+                -webkit-animation: spin 2s linear infinite; /* Safari */
+                animation: spin 2s linear infinite;
+                }
+
+                /* Safari */
+                @-webkit-keyframes spin {
+                0% { -webkit-transform: rotate(0deg); }
+                100% { -webkit-transform: rotate(360deg); }
+                }
+
+                @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+            .status {
+                color: rgb(0, 0, 0);
+                font-family: verdana;
+                font-size: 100%;
+                border: 2px solid rgb(30, 32, 32);
+                padding: 10px;
+                width: 500px;
+                background-color: #04AA6D;
+                position: relative;
+                left: 600px;
+                top: 100px;
+            }
+            .navbar-brand{
+              color: rgb(0, 0, 0);
+              font-size: 300%;    
+            }
+
+
         </style>
        
     </head>
 
     <body>
+
+      <!-- navigation bar -->
+
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <a class="navbar-brand" href="#">DashBoard</a>
+              </div>
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Home <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Status</a></li>
+                    <li><a href="#">Login</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">Status</a></li>
+                <li><a href="#">Login</a></li>
+                
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                
+                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+              </ul>
+            </div>
+          </nav>
+
+
 
         <script src="/socket.io/socket.io.js"></script>
 
@@ -58,10 +155,43 @@
         </script> 
 
 
+        <!--
         <h1>DashBoard</h1>
-        <hr>
+        -->
+        
+
+
+
+        
+
+
+        <!-- progress bar -->
+        
+        
+        <h2>Waiting Calls</h2>
+
+        
+            
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow=values aria-valuemin="0" aria-valuemax="100" style="width:50%">
+
+            <%= values[4] %>
+          </div>
+        </div>
+        
+        
+
+
+        <!-- spinner -->
+        
+        <h2 class="status">Server Status: Active</h2>
+
+        <div class="loader"></div>
+
+
         
         <canvas id="myChart" style="width:100%;max-width:500px"></canvas>
+
 
         <script>
 

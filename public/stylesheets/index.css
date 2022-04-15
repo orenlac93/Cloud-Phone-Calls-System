@@ -30,6 +30,19 @@ td {
 tr:nth-child(even) {
   background-color: #f2f2f2;
 }
+
+.btnDelete {
+  color: rgb(255, 255, 255);
+  font-family: verdana;
+  font-size: 100%;
+  border: 2px solid rgb(30, 32, 32);
+  padding: 10px;
+  background-color: #04AA6D;
+}
+
+.active{
+  background: rgb(0, 254, 212);
+}
    
 
 

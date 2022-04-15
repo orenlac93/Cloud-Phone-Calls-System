@@ -30,7 +30,7 @@
               <th>Age</th>
               <th>Prev Calls</th>
               <th>Product</th>
-              <th>Topic</th>
+              <!--<th>Topic</th>-->
             </tr>
           </thead>  
 
@@ -60,11 +60,11 @@
                     <td><%= obj.age %></td>
                     <td><%= obj.prev %></td>
                     <td><%= obj.product %></td>
-                    <td><%= obj.topic %></td>
+                    <!--<td><%= obj.topic %></td>-->
 
                     <!-- add button in the first row  -->
                     <%if (x == 1){ %>
-                      <td><button class="btnDelete">End Call</button></td>
+                      <td><button class="btnDelete">Answer</button></td>
                     <% } %>
                     
               <% x++;}); %>
@@ -79,7 +79,9 @@
         <script>
           $(document).ready(function(){
             $("#tbUser").on('click','.btnDelete',function(){
-                  $(this).closest('tr').remove();
+                  //$(this).closest('tr').remove();
+                  $(this).closest('tr').toggleClass("active");
+                  $(".btnDelete").html("Call Accepted");
                   
                 });
             });

@@ -66,7 +66,7 @@ mysqlModule.getData(function(result){
 
     app.get("/", function(req, res) { 
 
-        res.render("dashboard.ejs");
+        res.render("dashboard.ejs", values);
     }); 
 
 
