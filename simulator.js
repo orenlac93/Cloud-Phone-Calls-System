@@ -37,13 +37,14 @@ function createPhoneCall() {
     var topic = topic_list[Math.floor(Math.random() * topic_list.length)];
     console.log(topic);
 
-    //mongoModule.insertNewCall(time, city, gender, age, prev, product, topic)
+    mongoModule.insertNewCall(time, city, gender, age, prev, product, topic)
     mysqlModule.insertCall([time, city, gender, age, prev, product, topic]);
+    
     
     
 }
 
-var numOfIterations = 10
+var numOfIterations = 1000
 
 var num_of_seconds = Math.floor(Math.random() * 30) + 1;
 var timeToWait = num_of_seconds*1000
@@ -53,6 +54,7 @@ for (let i = 0; i < numOfIterations; i++){
     createPhoneCall();
     
     console.log('\n');
+    console.log(i);
     num_of_seconds = Math.floor(Math.random() * 30) + 1;
     timeToWait = num_of_seconds*1000
     

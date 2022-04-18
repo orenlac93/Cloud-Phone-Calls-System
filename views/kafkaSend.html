@@ -4,9 +4,8 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="Refresh" content="10">
 
-        <title>Get prediction</title>
+        <title>Kafka Send</title>
 
         <style> 
             h1 {
@@ -18,35 +17,30 @@
                 background-color: #04AA6D;
             }
             h2 {
-                color: rgb(0, 0, 0);
+                color: rgb(255, 255, 255);
                 font-family: verdana;
                 font-size: 100%;
                 border: 2px solid rgb(30, 32, 32);
                 padding: 30px;
-                background-color: #ffffff;
+                background-color: #04AA6D;
             }
-
-        
+    
 
         </style>
     </head>
 
     <body>
 
-        <h1>Get Prediction For Call Topic</h1>
+        <h1>Kafka Received The Call</h1>
         <hr>
-        <h2><%= topicPrediction_ %></h2>
-
+        <h2>message was sent to kafka</h1>
+        <hr>
 
         <div id="div"></div>
 
         <ul id="messages"></ul>
 
-    
 
-        <!-- 
-        <a href='/send'>Send</a> <br/><a href=''>View</a>
-        -->
     </body>
 
 </html>

@@ -41,7 +41,8 @@ app.get('/send', (req, res) => {
     
     mysqlModule.deleteCall()   // current call from the database (mySql) 
 
-    res.send('message was sent to kafka')
+    //res.send('message was sent to kafka')
+    res.render("kafkaSend.html");
 });
 
 
