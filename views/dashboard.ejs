@@ -52,6 +52,7 @@
                 background-color: #04AA6D;
             }
 
+
             div {
               width: 500px;
               height: 100px;
@@ -79,7 +80,7 @@
                 height: 120px;
                 position: relative;
                 left: 800px;
-                top: -100px;
+                top: -200px;
                 -webkit-animation: spin 2s linear infinite; /* Safari */
                 animation: spin 2s linear infinite;
                 }
@@ -104,7 +105,7 @@
                 background-color: #04AA6D;
                 position: relative;
                 left: 600px;
-                top: 100px;
+                top: -250px;
             }
             .navbar-brand{
               color: rgb(0, 0, 0);
@@ -159,26 +160,52 @@
         <h1>DashBoard</h1>
         -->
         
-
-
-
         
 
 
-        <!-- progress bar -->
-        
-        
-        <h2>Waiting Calls</h2>
+        <canvas id="waitingCallsChart" style="width:100%;max-width:500px;
+        position: relative;
+        left: 600px;
+        top: 300px;">
+        </canvas>
 
-        
+
+        <script>
+
             
-        <div class="progress">
-          <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow=values aria-valuemin="0" aria-valuemax="100" style="width:50%">
+            var xValues = ['Waiting calls'];
+            var yValues = [0];
+            var barColors = ['purple'];
 
-            <%= values[4] %>
-          </div>
-        </div>
-        
+            new Chart("waitingCallsChart", {
+            type: "bar",
+            data: {
+                labels: xValues,
+                datasets: [{
+                backgroundColor: barColors,
+                data: yValues
+                }]
+            },
+            options: {
+                legend: {display: false},
+                scales: {
+                  yAxes: [{
+                    ticks: {
+                      beginAtZero: true
+                    }
+                  }],
+                },
+                title: {
+                display: true,
+                text: "Waiting Calls"
+                }
+            }
+            });
+            
+
+        </script>
+
+
         
 
 
@@ -189,16 +216,24 @@
         <div class="loader"></div>
 
 
+
+
+
+
+
         
-        <canvas id="myChart" style="width:100%;max-width:500px"></canvas>
+        <canvas id="myChart" style="width:100%;max-width:500px;
+        position: relative;
+        top: -450px;">
+        </canvas>
 
 
         <script>
 
             
-            var xValues = ['joining', 'cutoff', 'complaint', 'service', 'overall'];
-            var yValues = [msg[0], msg[1], msg[2], msg[3], msg[4]];
-            var barColors = ['red','green','blue','orange','brown'];
+            var xValues = ['joining', 'cutoff', 'complaint', 'service'];
+            var yValues = [msg[0], msg[1], msg[2], msg[3]];
+            var barColors = ['red','green','blue','orange'];
 
             new Chart("myChart", {
             type: "bar",
@@ -211,9 +246,16 @@
             },
             options: {
                 legend: {display: false},
+                scales: {
+                  yAxes: [{
+                    ticks: {
+                      beginAtZero: true
+                    }
+                  }],
+                },
                 title: {
                 display: true,
-                text: "topics"
+                text: "Daily Calls Topics"
                 }
             }
             });
@@ -223,7 +265,10 @@
         
         
 
-        <canvas id="myChart2" style="width:100%;max-width:500px"></canvas>
+        <canvas id="myChart2" style="width:100%;max-width:500px;
+          position: relative;
+          top: -400px;">
+        </canvas>
         
         <script>
 
@@ -244,6 +289,13 @@
             },
             options: {
                 legend: {display: false},
+                scales: {
+                  yAxes: [{
+                    ticks: {
+                      beginAtZero: true
+                    }
+                  }],
+                },
                 title: {
                 display: true,
                 text: "Daily Calls"
@@ -259,10 +311,12 @@
         
 
 
+         
         <ul id="messages"></ul>
         <form id="form" action="">
           <input id="input" autocomplete="off" /><button>Send</button>
         </form>
+        
 
         <script>
             
@@ -286,9 +340,43 @@
 
             socket.on('chat message', function(msg) {
 
-                var xValues = ['joining', 'cutoff', 'complaint', 'service', 'overall'];
-                var yValues = [msg[0], msg[1], msg[2], msg[3], msg[4]];
-                var barColors = ['red','green','blue','orange','brown'];
+
+              var xValues = ['Waiting calls'];
+              var yValues = [msg[4]];
+              var barColors = ['purple'];
+
+              new Chart("waitingCallsChart", {
+              type: "bar",
+              data: {
+                  labels: xValues,
+                  datasets: [{
+                  backgroundColor: barColors,
+                  data: yValues
+                  }]
+              },
+              options: {
+                  legend: {display: false},
+                  scales: {
+                    yAxes: [{
+                      ticks: {
+                        beginAtZero: true
+                      }
+                    }],
+                  },
+                  title: {
+                  display: true,
+                  text: "Waiting Calls"
+                  }
+              }
+              });
+
+
+
+
+
+                var xValues = ['joining', 'cutoff', 'complaint', 'service'];
+                var yValues = [msg[0], msg[1], msg[2], msg[3]];
+                var barColors = ['red','green','blue','orange'];
 
                 
                 
@@ -303,9 +391,16 @@
                 },
                 options: {
                     legend: {display: false},
+                    scales: {
+                      yAxes: [{
+                        ticks: {
+                          beginAtZero: true
+                        }
+                      }],
+                    },
                     title: {
                     display: true,
-                    text: "topics"
+                    text: "Daily Calls Topics"
                     }
                 }
                 });
@@ -328,6 +423,13 @@
                 },
                 options: {
                     legend: {display: false},
+                    scales: {
+                      yAxes: [{
+                        ticks: {
+                          beginAtZero: true
+                        }
+                      }],
+                    },
                     title: {
                     display: true,
                     text: "Daily Calls"
@@ -336,7 +438,9 @@
                 });
 
 
+
                 
+
                 /*
                 var item = document.createElement('li');
                 item.textContent = msg;

@@ -69,11 +69,20 @@
         
         <form id="form" action="/prediction" method="get">  
 
+
             <label for="age">Age:</label>
-            <input type="text" id="age" name="age"><br><br>
+            <input type="number" id="age" name="age" min="18" max="120" value="18"><br><br>
+            
 
             <label for="city">City:</label>
-            <input type="text" id="city" name="city"><br><br>  
+
+            <select id="city" name="city">
+                <option value="jerusalem">Jerusalem</option>
+                <option value="telAviv">Tel Aviv</option>
+                <option value="haifa">Haifa</option>
+                <option value="beersheba">Beersheba</option>
+            </select><br><br>
+ 
 
 
             <label for="gender">Gender:</label><br>

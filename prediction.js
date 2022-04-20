@@ -88,7 +88,7 @@ app.get('/prediction', (req, res) => {
     var prediction = new bigml.Prediction(connection);
 
     
-    prediction.create('model/625d99185198db5eed001c5e', {'City': 'Jerusalem', 'Gender': 'female', 'Age': 67, 'Product': 'all'},function(error, prediction) { 
+    prediction.create('model/625f1b790c11da5784002756', {'City': 'Jerusalem', 'Gender': 'female', 'Age': 67, 'Product': 'all'},function(error, prediction) { 
         //console.log(JSON.stringify(prediction));
         topicPrediction = prediction.object.output;
         console.log(topicPrediction)
