@@ -1,4 +1,19 @@
 # Cloud-Phone-Calls-System
+<br />
+<br />
+
+## Phone Call Center System Based On Cloud Services 
+<br />
+<br />
+
+### Description
+
+In this project we are using a "phone calls simulator" to create calls data. <br />
+The calls data recived from the simulator transported to different databases using "Kafka" <br />
+for display and management system, real time dashboard and machine learning system based on "BigML" cloud computing <br />
+
+<br />
+
 
 <br />
 
