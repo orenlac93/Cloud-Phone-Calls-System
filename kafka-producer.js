@@ -9,7 +9,7 @@ var mysqlModule = require('./modules/mysql-module.js');
 
 const kafka = require('./modules/kafka-module');
 
-
+var sleep = require('system-sleep');
 
 const port = 3000
 
@@ -19,7 +19,6 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static('public'))
-
 
 
 
@@ -46,4 +45,14 @@ app.get('/send', (req, res) => {
 });
 
 
-server.listen(port, () => console.log(`Kafka Producer listening at http://localhost:${port}`));
+server.listen(port, () => {
+  console.log(`Kafka Producer listening at http://localhost:${port}`);
+
+  while(true){
+    sleep(1000);
+    mysqlModule.getData(function(result){
+      call = result[0];
+    
+    }); 
+  }  
+});

@@ -58,7 +58,7 @@
               height: 100px;
               background-color: #04AA6D;
               animation-name: example;
-              animation-duration: 10s;
+              animation-duration: 30s;
               
               animation-iteration-count: 100;
             }
@@ -163,7 +163,7 @@
         
 
 
-        <canvas id="waitingCallsChart" style="width:100%;max-width:500px;
+        <canvas id="waitingCallsChart" style="width:50%;max-width:500px;
         position: relative;
         left: 600px;
         top: 300px;">
@@ -191,6 +191,7 @@
                 scales: {
                   yAxes: [{
                     ticks: {
+                      precision: 0,
                       beginAtZero: true
                     }
                   }],
@@ -249,6 +250,7 @@
                 scales: {
                   yAxes: [{
                     ticks: {
+                      precision: 0,
                       beginAtZero: true
                     }
                   }],
@@ -292,6 +294,7 @@
                 scales: {
                   yAxes: [{
                     ticks: {
+                      precision: 0,
                       beginAtZero: true
                     }
                   }],
@@ -314,7 +317,7 @@
          
         <ul id="messages"></ul>
         <form id="form" action="">
-          <input id="input" autocomplete="off" /><button>Send</button>
+          <input id="input" autocomplete="off" /><button>Search</button>
         </form>
         
 
@@ -329,14 +332,16 @@
             var div = document.getElementById('div');
 
             
-            
+            /*
             div.addEventListener("webkitAnimationIteration", function(e) {    
                 e.preventDefault();
-                if (/*input.value*/true) {
+                if (true) {
                 socket.emit('chat message', input.value);
                 input.value = '';
                 }
             });
+            */
+            
 
             socket.on('chat message', function(msg) {
 
@@ -359,6 +364,7 @@
                   scales: {
                     yAxes: [{
                       ticks: {
+                        precision: 0,
                         beginAtZero: true
                       }
                     }],
@@ -394,6 +400,7 @@
                     scales: {
                       yAxes: [{
                         ticks: {
+                          precision: 0,
                           beginAtZero: true
                         }
                       }],
@@ -416,7 +423,7 @@
                 data: {
                     labels: xValues2,
                     datasets: [{ 
-                    data: [0, 0, msg[0], msg[1], msg[2], msg[3], 0, 0, 0, 0, 0, 0, 0],
+                    data: [msg[5], msg[6], msg[7], msg[8], msg[9], msg[10], msg[11], msg[12], msg[13], msg[14], msg[15], msg[16], msg[17]],
                     borderColor: "blue",
                     fill: false
                     }]
@@ -426,6 +433,7 @@
                     scales: {
                       yAxes: [{
                         ticks: {
+                          precision: 0,
                           beginAtZero: true
                         }
                       }],

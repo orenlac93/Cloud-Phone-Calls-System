@@ -44,9 +44,9 @@ function createPhoneCall() {
     
 }
 
-var numOfIterations = 1000
+var numOfIterations = 10
 
-var num_of_seconds = Math.floor(Math.random() * 30) + 1;
+var num_of_seconds = Math.floor(Math.random() * 120) + 1;
 var timeToWait = num_of_seconds*1000
 
 for (let i = 0; i < numOfIterations; i++){
@@ -54,8 +54,10 @@ for (let i = 0; i < numOfIterations; i++){
     createPhoneCall();
     
     console.log('\n');
-    console.log(i);
-    num_of_seconds = Math.floor(Math.random() * 30) + 1;
+    
+    console.log(`Call Number: ${i+1}\n`)
+
+    num_of_seconds = Math.floor(Math.random() * 120) + 1;
     timeToWait = num_of_seconds*1000
     
 }
