@@ -5,10 +5,15 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
         <title>prediction</title>
 
         <style>
             body {
+                background-image: url("https://thumbs.dreamstime.com/b/light-blue-background-area-graphic-elements-text-207517587.jpg");
                 background-color: #3e4745;
             } 
             h1 {
@@ -51,7 +56,7 @@
 
         <h1>Machine Learning</h1>
         <hr>
-        <h2>write the system data to file or get prediction to phone call</h1>
+        <h2>Create New Model Or Get Prediction For Phone Call Topic</h1>
         <hr>
 
         <div id="div"></div>
@@ -59,12 +64,18 @@
         <ul id="messages"></ul>
 
         
+        <i class="material-icons" style="font-size:80px;color:#04AA6D;
+                  position: relative; left: 200px;">computer</i>
+        <i class="fas fa-cloud" style="font-size:80px;color:#04AA6D;
+                  position: relative; left: 700px;"></i>
+
+        
         <form id="form" action="/write">      
           <button>Write data to CSV file</button>
         </form>
 
         <form id="form" action="/trainModel">      
-            <button class="tarinModel">Train Model</button>
+            <button class="tarinModel">Train Model <i class="fas fa-cloud"></i></button>
         </form>
 
 
@@ -80,12 +91,15 @@
             <label for="city">City:</label>
 
             <select id="city" name="city">
-                <option value="jerusalem">Jerusalem</option>
-                <option value="telAviv">Tel Aviv</option>
-                <option value="haifa">Haifa</option>
-                <option value="beersheba">Beersheba</option>
+                <option value="Jerusalem">Jerusalem</option>
+                <option value="Tel Aviv">Tel Aviv</option>
+                <option value="Haifa">Haifa</option>
+                <option value="Heersheba">Beersheba</option>
             </select><br><br>
  
+
+            <label for="prevCall">Previous Call:</label>
+            <input type="number" id="prevCall" name="prevCall" min="0" max="1000" value="0"><br><br>
 
 
             <label for="gender">Gender:</label><br>
@@ -107,7 +121,10 @@
             <input type="radio" id="product" name="product" value="all">
             <label for="all">All</label><br><br> 
 
-            <button>Get prediction</button>
+            <button>Get prediction 
+                <i class="fas fa-cloud"></i>
+                <i class="material-icons">computer</i>
+            </button>
         </form>
 
 

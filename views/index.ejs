@@ -13,13 +13,21 @@
         <link rel="stylesheet" type="text/css" href="./stylesheets/index.css" media="screen" />
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     </head>
 
     <body>
 
         <h1>Call Center</h1>
         <hr>
-        
+        <i class='fas fa-phone-volume' style='font-size:60px;color:#04AA6D;'></i>
+        <i class="material-icons" style="font-size:60px;color:#04AA6D;
+                  position: relative; left: 400px;">computer</i>
+        <i class="fas fa-cloud" style="font-size:60px;color:#04AA6D;
+                  position: relative; left: 800px;"></i>
+        <hr>
+
         <!-- table of phone calls  -->
         <table id="tbUser">
           <thead>
@@ -64,7 +72,7 @@
 
                     <!-- add button in the first row  -->
                     <%if (x == 1){ %>
-                      <td><button class="btnDelete">Answer</button></td>
+                      <td><button class="btnDelete">Answer <i class='fas fa-phone-volume'></i></button></td>
                     <% } %>
                     
               <% x++;}); %>

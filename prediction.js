@@ -91,11 +91,12 @@ app.get('/prediction', (req, res) => {
     var prediction = new bigml.Prediction(connection);
 
     
+    
     var now = new Date(); 
     time = date.format(now, 'DD.MM.YYYY HH:mm:ss'); 
-    //var time = '24.04.2022 16:00:00';
     
 
+    /*
     var city_list = ['Jerusalem', 'Tel Aviv', 'Haifa', 'Beersheba'];
     var city = city_list[Math.floor(Math.random() * city_list.length)];
 
@@ -103,11 +104,23 @@ app.get('/prediction', (req, res) => {
     var gender = gender_list[Math.floor(Math.random() * gender_list.length)];
 
     age = Math.floor(Math.random() * 80) + 18;
+    
 
     prev = Math.floor(Math.random() * 20);
 
+    
     var product_list = ['internet', 'cables', 'cellular', 'all'];
     var product = product_list[Math.floor(Math.random() * product_list.length)];
+
+    */
+
+
+    const city = req.query.city;
+    const gender = req.query.gender;
+    const age = req.query.age;
+    const prev = req.query.prevCall;
+    const product = req.query.product;
+
     
     prediction.create('model/62646342049fde7e750007eb', {'StartTime': time, 'City': city, 'Gender': gender, 'Age': age, 'PrevCalls': prev, 'Product': product},function(error, prediction) { 
         //console.log(JSON.stringify(prediction));

@@ -1,6 +1,7 @@
 
 body {
-    background-color:rgb(255, 255, 255);
+  background-image: url("https://thumbs.dreamstime.com/b/light-blue-background-area-graphic-elements-text-207517587.jpg");
+  background-color: #f6f2f2;
 }
 h1 {
   color: rgb(255, 255, 255);
@@ -9,11 +10,13 @@ h1 {
   border: 2px solid rgb(30, 32, 32);
   padding: 30px;
   background-color: #04AA6D;
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7mrNbzzYgfyaJvrUXMVh2ZoPETkhq0RR6tqSicouHDlCRAJcDcYGtsxl8Gn7BgMGhtLM&usqp=CAU");
   }
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
+    
   }
 th {
     background-color: #04AA6D;
@@ -28,8 +31,12 @@ td {
   }
 
 tr:nth-child(even) {
-  background-color: #f2f2f2;
+  background-color: #04AA6D;;
 }
+
+
+
+
 
 .btnDelete {
   color: rgb(255, 255, 255);
@@ -41,7 +48,7 @@ tr:nth-child(even) {
 }
 
 .active{
-  background: rgb(0, 254, 212);
+  background-color: #00FA9A;
 }
    
 
